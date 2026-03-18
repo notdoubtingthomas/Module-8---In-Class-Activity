@@ -24,16 +24,14 @@ public class DistanceFromAverage_Student {
         while (count < 15) {
 
             System.out.print("Enter " + "value " + (count + 1) + ": ");
-            int value = scanner.nextInt();
+            double value = scanner.nextDouble();
 
             if (value == 99999) {
                 System.out.println("Ending program.");
                 break;
             }
 
-            for (int i = 0; i < values.length; i++) {
-                values[i] = value;
-            }
+           values[count] = value;
 
             sum += value;
             count++;
@@ -42,17 +40,20 @@ public class DistanceFromAverage_Student {
         if (count == 0) {
             System.out.println("Error: count is zero.");
             System.exit(0);
+        } else {
+
+            double average = sum / count;
+
+            System.out.println("\nCount: " + count);
+            System.out.printf("Average: %.2f%n", average);
+
+            for (int i = 0; i < count; i++) {
+                System.out.println("\nValue: " + values[i]);
+                System.out.printf("Distance from average: %.2f%n",  Math.abs(values[i] - average));
+            }
+
         }
 
-        double average = sum / count;
-
-        System.out.println("Count: " + count);
-        System.out.printf("Average: %.2f%n", average);
-        
-        for (int i = 0; i < values.length; i++) {
-            System.out.println("Value: " + values[i]);
-            System.out.printf("Distance from average: %.2f%n",  (values[i] - average));
-        }
         scanner.close();
     }
 }
